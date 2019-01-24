@@ -23,7 +23,6 @@ namespace LAB11_TIMEPERSONOFTHEYEAR.Controllers
         public IActionResult Results(int startingYear, int endingYear)
         {
             //do what we want with the numbers
-
             return View(TimePerson.GetPersons(startingYear, endingYear));
         }
 
