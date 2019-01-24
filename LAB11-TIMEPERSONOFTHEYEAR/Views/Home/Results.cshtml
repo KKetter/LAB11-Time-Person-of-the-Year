@@ -1,0 +1,17 @@
+﻿@model List<LAB11_TIMEPERSONOFTHEYEAR.Models.TimePerson>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Results of Numbers</h1>
+    @foreach (var item in Model)
+    {
+        <h3>@item.Name</h3>
+        <h4>@item.Category</h4>
+    }
+</body>
+</html>
