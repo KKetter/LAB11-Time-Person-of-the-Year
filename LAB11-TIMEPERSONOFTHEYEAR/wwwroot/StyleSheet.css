@@ -1,7 +1,52 @@
-﻿body {
-    background-color:darkcyan;
+﻿html{
+    
+    height:100%;
+}
+
+title {
+    font-size: x-large;
+    font-weight: 200;
+    color: brown;
+    font-style: italic;
+}
+
+body {
+    background-color: darkcyan;
+    text-align: center;
 }
 
 header {
     text-align: center;
+}
+form{
+   text-align:center;
+}
+title {
+    text-align: center;
+    font-size: 99px;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    font-size: 69px;
+    color: white;
+}
+
+table{
+    border:dashed;
+    border-color:orangered;
+    color:azure;
+    margin-left:9vw;
+}
+
+tr{
+    border: dashed;
+    border-bottom-color: orangered;
+    border-top-color:orangered;
+}
+
+td{
+    border: dashed;
+    border-color:orangered;
 }

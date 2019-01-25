@@ -4,8 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LAB11_TIMEPERSONOFTHEYEAR.Models
+namespace  LAB11_TIMEPERSONOFTHEYEAR.Models
 {
+    /// <summary>
+    /// Create TimePerson object
+    /// </summary>
     public class TimePerson
     {
         public int Year { get; set; }
@@ -17,7 +20,12 @@ namespace LAB11_TIMEPERSONOFTHEYEAR.Models
         public string Title { get; set; }
         public string Category { get; set; }
         public string Context { get; set; }
-
+        /// <summary>
+        /// create List, set path to list, then read the list and split on ","'s, then add the objects to the people list - exception handling if ending year is greater than the beginning year return the entire list 
+        /// </summary>
+        /// <param name="begYear"></param>
+        /// <param name="endYear"></param>
+        /// <returns></returns>
         public static List<TimePerson> GetPersons(int begYear, int endYear)
         {
             List<TimePerson> people = new List<TimePerson>();
@@ -29,35 +37,29 @@ namespace LAB11_TIMEPERSONOFTHEYEAR.Models
             for (int i = 1; i < csvValues.Length; i++)
             {
                 string[] personValues = csvValues[i].Split(",");
-                TimePerson holdsValuePriorToPeopleList = new TimePerson()
+                people.Add(new TimePerson
                 {
-
-                    Year = Convert.ToInt32(personValues[0]),
+                    Year = (personValues[0] == "") ? 0 : Convert.ToInt32(personValues[0]),
                     Honor = personValues[1],
                     Name = personValues[2],
                     Country = personValues[3],
-                    BirthYear = Convert.ToInt32(personValues[4]),
-                    DeathYear = Convert.ToInt32(personValues[5]),
+                    BirthYear = (personValues[4] == "") ? 0 : Convert.ToInt32(personValues[4]),
+                    DeathYear = (personValues[5] == "") ? 0 : Convert.ToInt32(personValues[5]),
                     Title = personValues[6],
                     Category = personValues[7],
                     Context = personValues[8]
-                };
-                people.Add(holdsValuePriorToPeopleList);
-
-                //next step - LINQ query to filter
+                });
             }
+            if (begYear < endYear)
+            {
+                List<TimePerson> filteredList = people.Where(j => (j.Year >= begYear) && (j.Year <= endYear)).ToList();
+                return filteredList;
 
-            //iterate through array and set values appropiately
-            //csv is comma delimated 
-            //create the full list of peoples from the csv file
-            //THEN do the LINQ query (with Lambda expression) to filter
-
-            //people.Add();
-
-            //Amandas where
-            //List<TimePerson> listofPeople = people.Where(p => (p.Year >= begYear) && (p.Year <= endYear)).ToList();
-
-            return people;
+            }
+            else
+            {
+                return people;
+            }
         }
 
     }

@@ -1,17 +1,41 @@
 ﻿@model List<LAB11_TIMEPERSONOFTHEYEAR.Models.TimePerson>
 
 <!DOCTYPE html>
-<html>
 <head>
     <title>Results</title>
     <link href="~/StyleSheet.css" rel="stylesheet" />
 </head>
+    <header>
+    <h1>Search Results</h1>
+    </header>
 <body>
-    <h1>Results of Numbers</h1>
-    @foreach (var item in Model)
-    {
-        <h3>@item.Name</h3>
-        <h4>@item.Category</h4>
-    }
+
+    <table>
+        <tr>
+            <th>Year</th>
+            <th>Honor</th>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Birth Year</th>
+            <th>Death Year</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Context</th>
+        </tr>
+
+        @foreach (LAB11_TIMEPERSONOFTHEYEAR.Models.TimePerson item in Model)
+        {
+        <tr>
+            <td>@item.Year</td>
+            <td>@item.Honor</td>
+            <td>@item.Name</td>
+            <td>@item.Country</td>
+            <td>@item.BirthYear</td>
+            <td>@item.DeathYear</td>
+            <td>@item.Title</td>
+            <td>@item.Category</td>
+            <td>@item.Context</td>
+        </tr>
+        }
+    </table>
 </body>
-</html>
